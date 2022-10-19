@@ -21,10 +21,15 @@ WEBAPP_PORT = int(os.environ.get("PORT", 5002))
 @dp.message_handler(IsUser(), commands='start')
 async def cmd_start_admin(message: types.Message):
     cid = message.from_user.id
+    print(message.text)
+    try:
+        ref = message.text.split()[1]
+    except:
+        ref = 0
     if get_user(cid):
         await message.answer('Для оформления билета выберете в меню пункт «Забронировать»')
     else:
-        create_user(cid, message.from_user.username)
+        create_user(cid, message.from_user.username, ref)
         await message.answer('Привет, я бот для бронирования поездки. Для оформления билета выберете в меню пункт «Забронировать»')
 
 

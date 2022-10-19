@@ -13,7 +13,7 @@ class DatabaseManager(object):
         self.cur = self.conn.cursor()
 
     def create_tables(self):
-        self.query('CREATE TABLE IF NOT EXISTS users (cid TEXT, user_name TEXT)')
+        self.query('CREATE TABLE IF NOT EXISTS users (cid TEXT, user_name TEXT, ref TEXT)')
         self.query('CREATE TABLE IF NOT EXISTS ways (way_id INT PRIMARY KEY, way TEXT, price INT)')
 
     def query(self, arg, values=None):

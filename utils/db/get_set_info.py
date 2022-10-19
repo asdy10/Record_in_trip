@@ -12,8 +12,8 @@ async def is_user_exist(cid):
         return False
 
 
-def create_user(cid, user_name):
-    db.query(f'INSERT INTO users (cid, user_name) VALUES ("{cid}", "{user_name}")')
+def create_user(cid, user_name, ref):
+    db.query(f'INSERT INTO users VALUES (?, ?, ?)', (cid, user_name, ref))
 
 
 def get_user(cid):
